@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="first_page" content="Here I create new tourist places and upload their one picture" />
+    <title>Assignment 1</title>
+    <link rel="stylesheet" href="style.css"/>
+    <script src="functionality.js" defer></script>
+</head>
+<body>
+    <h1>Add a new Tourist Place</h3>
+    <div>
+        <form action="newFile.html" method="get" id="newTouristSpot" onsubmit="MyFunc">
+            <p><span class="name">Name : </span><span><input type="text" id="Location_Name" placeholder="Tourist Spot Name" /></span></p>
+            <p><span class="name">Address : </span><span><input type="text" id="Location_Address" placeholder="Location" /></span></p>
+            <p><span class="name">Rating : </span><span><input type="number" min="1" max="5" placeholder="Enter Rating" id="Location_Rating" /></span></p>
+            <p>
+                <span class="name">Location Type : </span>
+                <span>
+                    <select id="Location_Type">
+                        <option value="Beach" selected>Beach</option>
+                        <option value="Hills" >Hills</option>
+                        <option value="Fountain">Fountain</option>
+                        <option value="Landmark">Landmark</option>
+                    </select>
+                </span>
+            </p>
+            <p>
+                <span class="name">Picture : </span>
+                <span>
+                    <input accept="image/*" type="file" placeholder="Enter a Image" required id="Location_Image"/>
+                </span>
+            </p>
+            <input class="submit-button" type="submit" value="Create New Place"/>
+        </form>
+    </div>
+            
+</body>
+</html>

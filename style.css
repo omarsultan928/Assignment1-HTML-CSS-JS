@@ -1,0 +1,119 @@
+h1 {
+    padding-left: 10%;
+    padding-top: 5%;
+    color: blue;
+    font-family: 'Times New Roman', Times, serif;
+}
+p {
+    margin-left: 10%;
+    width: 70%;
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: space-between;
+}
+p.name {
+    width: 15%;
+}
+p span input{
+    width: 700px;
+    height: 30px;
+    text-align: center;
+    background-color: blanchedalmond;
+    border: 1px solid black ;
+    border-radius: 25px;
+}
+p span select{
+    width: 700px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid black ;
+    border-radius: 25px;
+    background-color: blanchedalmond;
+}
+.submit-button {
+    margin-left: 550px;
+    margin-top: 25px;
+    border: 1px solid black;
+    border-radius: 25px;
+    width: 200px;
+    height: 30px;
+    background-color: green;
+}
+
+
+.container {
+    width: inherit;
+    margin: 0px 0px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+table {
+    width: 100%;
+    overflow-y: scroll;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+.container input {
+    width: 400px;
+    min-height: 30px;
+    text-align: center;
+    height: 15px;
+    border: 2px solid cornflowerblue;
+    border-radius: 10px;
+    background-color: rgb(152, 190, 119);
+    color: rgb(73, 133, 133);
+}
+tr{
+    width: inherit;
+    min-height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    /* padding-top: 10px; */
+}
+th {
+    width: 15%;
+    padding: 10px;
+    text-align: center;
+    color: aquamarine;
+}
+td {
+    padding: 10px;
+    width: 15%;
+    text-align: center;
+}
+td img {
+    width: 100%;
+    height: inherit;
+    align-items: center;
+}
+td .update-button {
+    width: auto;
+    text-align: center;
+    height: 30px;
+    border: 2px solid rgb(9, 10, 12);
+    border-radius: 10px;
+    background-color: rgb(152, 190, 119);
+    color: rgb(36, 134, 134);
+}
+td .update-button:hover {
+   background-color: black;
+}
+td .delete-button {
+    width: auto;
+    text-align: center;
+    height: 30px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    background-color: rgb(205, 41, 33);
+    color: rgb(179, 193, 193);
+    
+}
+td .delete-button:hover {
+    background-color: black;
+ }

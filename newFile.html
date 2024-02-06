@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tourist place"  content="Tourist Place tables">
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <input id="search_field" placeholder="Enter Name To Search" />
+        <table style="margin-top: 40px;">
+            <tr style="background-color: black; align-items: center;">
+                <th>Name</th>
+                <th>Address</th>
+                <th>Rating</th>
+                <th>Picture</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>Sadapathor</td>
+                <td>Bholagonj, Sylhet</td>
+                <td>4.5</td>
+                <td><img src="/image/Bholagonj.jpg" alt="Bholagonj-Image"/></td>
+                <td style="display: flex; flex-direction: row; justify-content: space-around;align-items: center;">
+                    <button class="update-button">Update</button>
+                    <button class="delete-button">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Swamp Forest</td>
+                <td>Ratargul, Sylhet</td>
+                <td>4.9</td>
+                <td><img src="/image/Ratargul.jpg" alt="Ratargul-Image"/>
+                </td>
+                <td style="display: flex; flex-direction: row; justify-content: space-around;align-items: center;">
+                    <button class="update-button">Update</button>
+                    <button class="delete-button">Delete</button>
+                </td>
+            </tr>
+        </table>
+        <button style="margin-top: 40px;">Create New Tourist Place</button>
+    </div>
+</body>
+</html>
