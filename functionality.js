@@ -26,77 +26,80 @@ if(window.location.pathname==='/newFile.html')
     function initTable()
     {
         const Table = document.querySelector('table');
+        console.log(tourist_place.length);
         for(i=0;i<tourist_place.length;i++)
         {
-            const Tr = document.createElement('tr');
-            Tr.setAttribute('name',tourist_place[i]['name']);
-            for(attribs in tourist_place[i])
-            {
-                const Td = document.createElement('td');
-                if(attribs==="picture")
+            if(tourist_place[i]){
+                const Tr = document.createElement('tr');
+                Tr.setAttribute('name',tourist_place[i]['name']);
+                for(attribs in tourist_place[i])
                 {
-                    const img = document.createElement('img');
-                    img.setAttribute('src',`${tourist_place[i][attribs]}`);
-                    img.setAttribute('alt',`${tourist_place[i][attribs]}`);
-                    Td.appendChild(img);
-                }
-                else
-                {
-                    Td.setAttribute('class',`${attribs}`);
-                    Td.innerHTML = `${tourist_place[i][attribs]}`;
-                }
-                Tr.appendChild(Td);
-            }
-            const btn = document.createElement('button');
-            const btn1 = document.createElement('button');
-            const Td = document.createElement('td');
-            Td.setAttribute('class','button-column');
-            btn.setAttribute('class','update-button');
-            btn.innerHTML="Update";
-            btn.addEventListener('click',(e)=>{
-                let fieldName = window.prompt('Enter Column Name.');
-                let value = window.prompt('Enter a value');
-                let ok = false;
-                for(i=0;i<Tr.children.length;i++)
-                {
-                    let tempTd = Tr.children[i];
-                    if(tempTd.getAttribute('class')===fieldName)
+                    const Td = document.createElement('td');
+                    if(attribs==="picture")
                     {
-                        tempTd.innerHTML=value;
-                        ok = true;
-                        updateLocalStorage();
-                        break;
+                        const img = document.createElement('img');
+                        img.setAttribute('src',`${tourist_place[i][attribs]}`);
+                        img.setAttribute('alt',`${tourist_place[i][attribs]}`);
+                        Td.appendChild(img);
                     }
+                    else
+                    {
+                        Td.setAttribute('class',`${attribs}`);
+                        Td.innerHTML = `${tourist_place[i][attribs]}`;
+                    }
+                    Tr.appendChild(Td);
                 }
-                if(!ok)
-                {
-                    alert('Coulmn Name is Invalid!');
-                }
-            });
-            Td.appendChild(btn);
-            btn1.setAttribute('class','delete-button');
-            btn1.innerHTML="Delete";
-            // btn1.addEventListener('click',()=>{
-            //     let name;
-            //     for(i=0;i<Tr.children.length;i++)
-            //     {
-            //         if(Tr.children[i].getAttribute('class')==='name')
-            //         {
-            //             name = toString(Tr.children[i].innerHTML);
-            //         }
-            //     }
-            //     for(i=0;i<tourist_place.length;i++)
-            //     {
-            //         if(tourist_place[i]['name']===name)
-            //         {
-            //             tourist_place[i].remove();
-            //             updateLocalStorage();
-            //         }
-            //     }
-            // });
-            Td.appendChild(btn1);
-            Tr.appendChild(Td);
-            Table.appendChild(Tr);
+                const btn = document.createElement('button');
+                const btn1 = document.createElement('button');
+                const Td = document.createElement('td');
+                Td.setAttribute('class','button-column');
+                btn.setAttribute('class','update-button');
+                btn.innerHTML="Update";
+                btn.addEventListener('click',(e)=>{
+                    let fieldName = window.prompt('Enter Column Name.');
+                    let value = window.prompt('Enter a value');
+                    let ok = false;
+                    for(i=0;i<Tr.children.length;i++)
+                    {
+                        let tempTd = Tr.children[i];
+                        if(tempTd.getAttribute('class')===fieldName)
+                        {
+                            tempTd.innerHTML=value;
+                            ok = true;
+                            updateLocalStorage();
+                            break;
+                        }
+                    }
+                    if(!ok)
+                    {
+                        alert('Coulmn Name is Invalid!');
+                    }
+                });
+                Td.appendChild(btn);
+                btn1.setAttribute('class','delete-button');
+                btn1.innerHTML="Delete";
+                btn1.addEventListener('click',()=>{
+                    let name=Tr.getAttribute('name');
+                    for(i=0;i<tourist_place.length;i++)
+                    {
+                        if(tourist_place[i]['name']===name)
+                        {
+                            tourist_place.splice(i,1);
+                            updateLocalStorage();
+                            console.log(tourist_place);
+                            let rows = document.querySelectorAll('tr');
+                            rows.forEach((row)=>{
+                                const str = row.getAttribute('name');
+                                if(str)row.remove();
+                            });
+                            initTable();
+                        }
+                    }
+                });
+                Td.appendChild(btn1);
+                Tr.appendChild(Td);
+                Table.appendChild(Tr);
+            }
         }
     }
     initTable();
@@ -109,7 +112,8 @@ if(window.location.pathname==='/newFile.html')
         {
             let rows = document.querySelectorAll('tr');
             rows.forEach((row)=>{
-                row.remove();
+                const str = row.getAttribute('name');
+                if(str)row.remove();
             });
             initTable();
         }
@@ -127,33 +131,40 @@ if(window.location.pathname==='/newFile.html')
         }
     });
     
-    // Update TouristPlace()
-    // function onUpdate(tableRow)
-    // {
-    //     console.log(tableRow.children[0]);
-    //     if(tableRow)
-    //     {
-    //         console.log(tableRow);
-    //         let fieldName = window.prompt('enter a column name');
-    //     //     let ok = false;
-    //     //     for(i=0;i<tableRow.children.length;i++)
-    //     //     {
-    //     //         let row = tableRow.children[i];
-                
-    //     //         if(row.getAttribute('class')===fieldName)
-    //     //         {
-    //     //             let value = window.prompt('enter a new value');
-    //     //             row.innerHTML=value;
-    //     //             ok = true;
-    //     //             break;
-    //     //         }
-    //     //     }
-    //     //     if(!ok)
-    //     //     {
-    //     //         alert("your column name is invalid!");
-    //     //     }
-    //     }
-    // }
+    // Sort By Rating
+    const rH = document.getElementById('ratingHeader');
+    const rO = document.getElementById('ratingOrder');
+    rH.style.cursor="pointer";
+    rH.addEventListener('click',()=>{
+        let value = rO.getAttribute('value');
+        if(value==='default')value='asc';
+        else if(value==='asc')value='dsc';
+        else if(value==='dsc')value='default';
+        rO.innerHTML="("+value+")";
+        rO.setAttribute('value',value);
+        if(value==='asc')
+        {
+            tourist_place.sort(function(a,b){
+                let aR = parseFloat(a['rating']);
+                let bR = parseFloat(b['rating']);
+                return aR-bR});
+        }
+        else if(value==='dsc')
+        {
+            tourist_place.sort(function(a,b){
+                let aR = parseFloat(a['rating']);
+                let bR = parseFloat(b['rating']);
+                return bR-aR});
+            // console.log(tourist_place);
+        }
+        let rows = document.querySelectorAll('tr');
+            rows.forEach((row)=>{
+                const str = row.getAttribute('name');
+                if(str)row.remove();
+            });
+            initTable();
+    });
+
 }
 // First Page functionality
 
